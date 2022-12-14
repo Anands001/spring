@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https:www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Welcome</h1>
+<form action="/save">
+Name:<input type="text" name="name">
+Salary:<input type="text" name="Salary">
+<input type="submit">
+</form>
+<table border="5px" style="margin-top: 50px;">
+<thead>
+<tr>
+<th>Emp.No</th>
+<th>Emp.Name</th>
+<th>Emp.Salary</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="emp:${obj}">
+<td th:text="${emp.id}"></td>
+<td th:text="${emp.name}"></td>
+<td th:text="${emp.Salary}"></td>
+<td><Button><a th:href="@{edit/{id}(id=${emp.id})}">Edit</a></Button></td>
+<td><Button><a th:href="@{del/{id}(id=${emp.id})}">Delete</a></Button></td>
+</tr>
+</tbody>
+</table>
+<form action="/update" style="margin-top: 100px;">
+<input type="hidden" name="id" th:value=${id}>
+<h3 th:text="${id}"></h3>
+Name:<input type="text" name="name">
+Salary:<input type="text" name="Salary">
+<input type="Submit">
+</form>
+</body>
+</html>
